@@ -10,6 +10,7 @@ const showTasks = async () => {
     const {
       data: { tasks },
     } = await axios.get('/api/v1/tasks')
+    console.log(tasks);
     if (tasks.length < 1) {
       tasksDOM.innerHTML = '<h5 class="empty-list">No tasks in your list</h5>'
       loadingDOM.style.visibility = 'hidden'
@@ -17,9 +18,9 @@ const showTasks = async () => {
     }
     const allTasks = tasks
       .map((task) => {
-        const { completed, _id: taskID, name } = task
-        return `<div class="single-task ${completed && 'task-completed'}">
-<h5><span><i class="far fa-check-circle"></i></span>${name}</h5>
+        const { Completed, _id: taskID, Name } = task
+        return `<div class="single-task ${Completed && 'task-completed'}">
+<h5><span><i class="far fa-check-circle"></i></span>${Name}</h5>
 <div class="task-links">
 
 
